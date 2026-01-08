@@ -21,6 +21,49 @@
 
 ---
 
+## 🔐 IT Audit & Technology Risk (Junior Level)
+
+> Beginner-level skills developed through academic projects, self-learning, and hands-on data analysis, with a strong interest in IT Audit, Risk, and Controls.
+
+### 🛡️ IT Audit Fundamentals
+- Basic understanding of **IT General Controls (ITGC)** concepts (access management, change management, logical access).
+- Awareness of **internal controls**, **IT risks**, and control objectives in information systems.
+
+### 👤 User Access Review (Beginner)
+- Review of user access rights and roles.
+- Identification of **excessive, inactive, or unusual access**.
+- Introductory understanding of **Segregation of Duties (SoD)** principles.
+
+### 📊 Audit Analytics (Beginner)
+- Use of **Excel, SQL, and Python** to support audit procedures.
+- Detection of anomalies and basic risk indicators in datasets.
+- Support to audit analysis through data exploration and visualization.
+
+### 🧾 Data Integrity & Controls Awareness
+- Basic checks for **data accuracy, completeness, and consistency**.
+- Understanding the importance of reliable data for audit and compliance purposes.
+
+### 📝 Audit Documentation & Reporting
+- Preparation of simple audit summaries and findings.
+- Support to reporting activities using **Excel, Power BI, Word, and PowerPoint**.
+- Clear documentation of analysis steps and results.
+
+### 🔍 Risk & Compliance Awareness
+- Introductory knowledge of **IT risk**, **control weaknesses**, and compliance-oriented thinking.
+- Familiarity with audit terminology and professional audit mindset.
+
+---
+
+## 🧰 Tools for Audit & Reporting
+
+- **Microsoft Excel** (formulas, data validation, pivot tables)
+- **Microsoft Word** (audit documentation & reporting)
+- **Microsoft PowerPoint** (audit findings presentation)
+- **Power BI** (audit dashboards & visual reporting)
+- **SQL** (data extraction and analysis)
+- **Python** (audit analytics & anomaly detection support)
+
+
 <!-- GitHub stats -->
 ![](https://github-readme-stats.vercel.app/api?username=eyaoueslati06&theme=radical&hide_border=false&include_all_commits=true&count_private=true)
 
