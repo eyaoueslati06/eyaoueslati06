@@ -22,11 +22,11 @@
 ---
 
 
+<!-- GitHub Stats -->
+![Eya's GitHub stats](https://github-readme-stats.vercel.app/api?username=eyaoueslati06&show_icons=true&theme=radical&hide_border=false)
 
-<!-- GitHub stats -->
-![](https://github-readme-stats.vercel.app/api?username=eyaoueslati06&theme=radical&hide_border=false&include_all_commits=true&count_private=true)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=eyaoueslati06&layout=compact&theme=radical&hide_border=false)
 
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=eyaoueslati06&theme=radical&layout=compact)
 
 ---
 
