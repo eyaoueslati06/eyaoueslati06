@@ -75,19 +75,12 @@
 
 ---
 
-## 📌 Featured Projects
-🔹 **End-to-End Data Science Projects**  
-From raw data to insights, models, and visual dashboards.
+## 🚀 Projects
 
-🔹 **Machine Learning & NLP Experiments**  
-Hands-on projects exploring algorithms, evaluation, and optimization.
+<!-- PROJECTS_START -->
 
-🔹 **Data Analysis & Visualization Dashboards**  
-Interactive dashboards for decision-making and insight discovery.
-
-*(More projects coming soon 🚀)*
+<!-- PROJECTS_END -->
 
 ---
-
 
 ✨ *Data is everywhere — insight comes from asking the right questions.*
