@@ -1,6 +1,8 @@
 import json
 import os
 import urllib.request
+import base64
+import re
 from collections import defaultdict
 
 
@@ -69,6 +71,8 @@ CATEGORY_KEYWORDS = {
         "chatbot",
         "openai",
         "langchain",
+        "gemini",
+        "faiss",
         "agent",
         "agents",
     ],
@@ -116,11 +120,11 @@ CATEGORY_ORDER = [
 ]
 
 
-# GitHub topics that we want to display as technologies/tools.
 TOOL_TOPIC_MAP = {
 
     "react": "React",
     "reactjs": "React",
+
     "nextjs": "Next.js",
     "next-js": "Next.js",
 
@@ -156,6 +160,13 @@ TOOL_TOPIC_MAP = {
 
     "openai": "OpenAI",
 
+    "gemini": "Gemini",
+    "google-gemini": "Gemini",
+
+    "faiss": "FAISS",
+
+    "streamlit": "Streamlit",
+
     "flask": "Flask",
     "fastapi": "FastAPI",
     "django": "Django",
@@ -170,6 +181,87 @@ TOOL_TOPIC_MAP = {
 
     "sql": "SQL",
     "tsql": "T-SQL",
+
+    "jupyter": "Jupyter Notebook",
+}
+
+
+README_TOOL_KEYWORDS = {
+
+    "streamlit": "Streamlit",
+
+    "langchain": "LangChain",
+
+    "faiss": "FAISS",
+
+    "gemini": "Gemini",
+
+    "google generative ai": "Gemini",
+
+    "hugging face": "Hugging Face",
+    "huggingface": "Hugging Face",
+
+    "openai": "OpenAI",
+
+    "pandas": "Pandas",
+
+    "numpy": "NumPy",
+
+    "scikit-learn": "Scikit-learn",
+    "sklearn": "Scikit-learn",
+
+    "tensorflow": "TensorFlow",
+
+    "pytorch": "PyTorch",
+
+    "matplotlib": "Matplotlib",
+
+    "seaborn": "Seaborn",
+
+    "plotly": "Plotly",
+
+    "power bi": "Power BI",
+
+    "tableau": "Tableau",
+
+    "react": "React",
+
+    "node.js": "Node.js",
+    "nodejs": "Node.js",
+
+    "express": "Express",
+
+    "mongodb": "MongoDB",
+
+    "mysql": "MySQL",
+
+    "postgresql": "PostgreSQL",
+
+    "spark": "Apache Spark",
+
+    "pyspark": "PySpark",
+
+    "hadoop": "Hadoop",
+
+    "kafka": "Kafka",
+
+    "elasticsearch": "Elasticsearch",
+
+    "flask": "Flask",
+
+    "fastapi": "FastAPI",
+
+    "django": "Django",
+
+    "docker": "Docker",
+
+    "jupyter": "Jupyter Notebook",
+
+    "nltk": "NLTK",
+
+    "spacy": "spaCy",
+
+    "gensim": "Gensim",
 }
 
 
@@ -192,7 +284,9 @@ def api_request(url):
     )
 
     with urllib.request.urlopen(request) as response:
-        return json.loads(response.read().decode())
+        return json.loads(
+            response.read().decode()
+        )
 
 
 def get_repositories():
@@ -215,12 +309,9 @@ def get_repository_languages(repo_name):
     )
 
     try:
+
         languages = api_request(url)
 
-        # GitHub returns something like:
-        # {"Python": 120000, "Jupyter Notebook": 60000}
-        #
-        # Sort by amount of code.
         languages = sorted(
             languages.items(),
             key=lambda item: item[1],
@@ -242,6 +333,42 @@ def get_repository_languages(repo_name):
         return []
 
 
+def get_readme_content(repo_name):
+
+    url = (
+        f"https://api.github.com/repos/"
+        f"{USERNAME}/{repo_name}/readme"
+    )
+
+    try:
+
+        readme_data = api_request(url)
+
+        encoded_content = readme_data.get(
+            "content",
+            ""
+        )
+
+        if not encoded_content:
+            return ""
+
+        return base64.b64decode(
+            encoded_content
+        ).decode(
+            "utf-8",
+            errors="ignore"
+        )
+
+    except Exception as error:
+
+        print(
+            f"Could not read README for "
+            f"{repo_name}: {error}"
+        )
+
+        return ""
+
+
 def normalize(text):
 
     return (
@@ -255,9 +382,157 @@ def normalize(text):
     )
 
 
+def clean_markdown_text(text):
+
+    text = re.sub(
+        r"!\[.*?\]\(.*?\)",
+        "",
+        text
+    )
+
+    text = re.sub(
+        r"\[(.*?)\]\(.*?\)",
+        r"\1",
+        text
+    )
+
+    text = re.sub(
+        r"<.*?>",
+        "",
+        text
+    )
+
+    text = re.sub(
+        r"\*\*(.*?)\*\*",
+        r"\1",
+        text
+    )
+
+    text = re.sub(
+        r"\*(.*?)\*",
+        r"\1",
+        text
+    )
+
+    text = re.sub(
+        r"`(.*?)`",
+        r"\1",
+        text
+    )
+
+    return text.strip()
+
+
+def get_readme_description(repo_name):
+
+    readme_content = get_readme_content(
+        repo_name
+    )
+
+    if not readme_content:
+        return ""
+
+    readme_content = re.sub(
+        r"<!--.*?-->",
+        "",
+        readme_content,
+        flags=re.DOTALL
+    )
+
+    lines = readme_content.splitlines()
+
+    paragraphs = []
+    current_paragraph = []
+
+    for line in lines:
+
+        line = line.strip()
+
+        if not line:
+
+            if current_paragraph:
+
+                paragraph = " ".join(
+                    current_paragraph
+                )
+
+                paragraphs.append(
+                    paragraph
+                )
+
+                current_paragraph = []
+
+            continue
+
+        if line.startswith("#"):
+            continue
+
+        if line.startswith("!["):
+            continue
+
+        if "img.shields.io" in line:
+            continue
+
+        if line in [
+            "---",
+            "***",
+            "___"
+        ]:
+            continue
+
+        if line.startswith("<"):
+            continue
+
+        if (
+            line.startswith("- ")
+            or line.startswith("* ")
+            or line.startswith("+ ")
+        ):
+            continue
+
+        if re.match(
+            r"^\d+\.",
+            line
+        ):
+            continue
+
+        current_paragraph.append(
+            clean_markdown_text(line)
+        )
+
+    if current_paragraph:
+
+        paragraphs.append(
+            " ".join(
+                current_paragraph
+            )
+        )
+
+    for paragraph in paragraphs:
+
+        paragraph = clean_markdown_text(
+            paragraph
+        )
+
+        if len(paragraph) >= 40:
+
+            if len(paragraph) > 300:
+
+                paragraph = (
+                    paragraph[:297].rstrip()
+                    + "..."
+                )
+
+            return paragraph
+
+    return ""
+
+
 def classify_repository(repo):
 
-    name = normalize(repo.get("name"))
+    name = normalize(
+        repo.get("name")
+    )
 
     description = normalize(
         repo.get("description")
@@ -275,11 +550,18 @@ def classify_repository(repo):
         )
     )
 
+    readme_text = normalize(
+        get_readme_content(
+            repo["name"]
+        )
+    )
+
     text = (
         f"{name} "
         f"{description} "
         f"{topics} "
-        f"{language}"
+        f"{language} "
+        f"{readme_text}"
     )
 
     scores = {}
@@ -305,6 +587,7 @@ def classify_repository(repo):
     )
 
     if scores[best_category] == 0:
+
         return "📁 Other Projects"
 
     return best_category
@@ -315,7 +598,7 @@ def detect_tools(repo):
     tools = []
 
     # --------------------------------
-    # 1. GitHub detected languages
+    # GitHub detected languages
     # --------------------------------
 
     languages = get_repository_languages(
@@ -328,7 +611,7 @@ def detect_tools(repo):
             tools.append(language)
 
     # --------------------------------
-    # 2. Useful technologies from topics
+    # GitHub topics
     # --------------------------------
 
     topics = repo.get(
@@ -349,8 +632,22 @@ def detect_tools(repo):
             if tool not in tools:
                 tools.append(tool)
 
-    # Keep the line readable.
-    return tools[:7]
+    # --------------------------------
+    # README tool detection
+    # --------------------------------
+
+    readme_content = get_readme_content(
+        repo["name"]
+    ).lower()
+
+    for keyword, tool in README_TOOL_KEYWORDS.items():
+
+        if keyword in readme_content:
+
+            if tool not in tools:
+                tools.append(tool)
+
+    return tools[:8]
 
 
 def format_repo(repo):
@@ -359,35 +656,40 @@ def format_repo(repo):
 
     url = repo["html_url"]
 
+    # --------------------------------
+    # Description
+    # --------------------------------
+
     description = repo.get(
         "description"
     )
+
+    if not description:
+
+        description = get_readme_description(
+            repo["name"]
+        )
+
+    # --------------------------------
+    # Tools
+    # --------------------------------
 
     tools = detect_tools(repo)
 
     lines = []
 
-    # ------------------------------
     # Project name
-    # ------------------------------
-
     lines.append(
         f"#### 🔹 [{name}]({url})"
     )
 
-    # ------------------------------
     # Description
-    # ------------------------------
-
     if description:
 
         lines.append("")
         lines.append(description)
 
-    # ------------------------------
     # Tools
-    # ------------------------------
-
     if tools:
 
         lines.append("")
@@ -406,18 +708,18 @@ def generate_projects(repositories):
 
     for repo in repositories:
 
-        # Do not display the profile repository itself.
+        # Skip profile repository
         if (
             repo["name"].lower()
             == USERNAME.lower()
         ):
             continue
 
-        # Do not display forks.
+        # Skip forks
         if repo.get("fork"):
             continue
 
-        # Do not display archived repos.
+        # Skip archived repos
         if repo.get("archived"):
             continue
 
@@ -531,10 +833,8 @@ def main():
         f"Found {len(repositories)} repositories."
     )
 
-    projects_markdown = (
-        generate_projects(
-            repositories
-        )
+    projects_markdown = generate_projects(
+        repositories
     )
 
     update_readme(
