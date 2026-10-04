@@ -140,6 +140,14 @@ Data analytics Project showcasing customer behavior analysis using python, sql a
 
 ### 🤖 Data Science & Machine Learning
 
+#### 🔹 [Resume-Category-Prediction](https://github.com/eyaoueslati06/Resume-Category-Prediction)
+
+Machine learning project that classifies resumes into job categories using NLP, TF-IDF vectorization, and a trained classification model.
+
+**Tools:** Jupyter Notebook • Python
+
+---
+
 #### 🔹 [E-Commerce-Product-Delivery-Prediction](https://github.com/eyaoueslati06/E-Commerce-Product-Delivery-Prediction)
 
 The aim of this project to predict whether the product from an e-commerce company will reach on time or not. This project also analyzes various factors that affect the delivery of the product as well as studies the customer behavior
@@ -169,12 +177,6 @@ The aim of this analysis is to predict the price of diamonds based on their char
 Bank Customer Churn Prediction The aim of this project to analyze the bank customer's demographics and financial information which inculdes customer's age, gender. country, credit score, balance and many others to predict whether the customer will leave the bank or not
 
 **Tools:** Jupyter Notebook
-
----
-
-#### 🔹 [Resume-Category-Prediction](https://github.com/eyaoueslati06/Resume-Category-Prediction)
-
-**Tools:** Jupyter Notebook • Python
 
 ---
 
