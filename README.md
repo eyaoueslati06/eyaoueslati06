@@ -114,6 +114,82 @@
 
 <!-- PROJECTS_START -->
 
+### 📊 Data Analysis & Business Intelligence
+
+#### 🔹 [SQL_exploratory_data_analysis_project](https://github.com/eyaoueslati06/SQL_exploratory_data_analysis_project)
+
+**Tools:** TSQL
+
+---
+
+#### 🔹 [FinancialReportingAndAnalysis](https://github.com/eyaoueslati06/FinancialReportingAndAnalysis)
+
+---
+
+#### 🔹 [customer_behavior_analysis](https://github.com/eyaoueslati06/customer_behavior_analysis)
+
+Data analytics Project showcasing customer behavior analysis using python, sql and power BI
+
+**Tools:** Jupyter Notebook
+
+---
+
+### 🤖 Data Science & Machine Learning
+
+#### 🔹 [E-Commerce-Product-Delivery-Prediction](https://github.com/eyaoueslati06/E-Commerce-Product-Delivery-Prediction)
+
+The aim of this project to predict whether the product from an e-commerce company will reach on time or not. This project also analyzes various factors that affect the delivery of the product as well as studies the customer behavior
+
+**Tools:** Jupyter Notebook
+
+---
+
+#### 🔹 [Salary-Prediction](https://github.com/eyaoueslati06/Salary-Prediction)
+
+The aim of this project to predict the salary of individuals from varied countires and races based on their demographics such as occupation, age, gender, experience, education, etc. The dataset is taken from Kaggle. The dataset has 32561 rows and 15 columns. The dataset has 8 independent variables and 1 target variable i.e Salary
+
+**Tools:** Jupyter Notebook
+
+---
+
+#### 🔹 [Diamond-Price-Prediction](https://github.com/eyaoueslati06/Diamond-Price-Prediction)
+
+The aim of this analysis is to predict the price of diamonds based on their characteristics. The dataset used for this analysis is the Diamonds dataset from Kaggle. The dataset contains 53940 observations and 10 variables. The variables are as follows
+
+**Tools:** Jupyter Notebook
+
+---
+
+#### 🔹 [Customer-Churn-Prediction](https://github.com/eyaoueslati06/Customer-Churn-Prediction)
+
+Bank Customer Churn Prediction The aim of this project to analyze the bank customer's demographics and financial information which inculdes customer's age, gender. country, credit score, balance and many others to predict whether the customer will leave the bank or not
+
+**Tools:** Jupyter Notebook
+
+---
+
+#### 🔹 [Resume-Category-Prediction](https://github.com/eyaoueslati06/Resume-Category-Prediction)
+
+**Tools:** Jupyter Notebook • Python
+
+---
+
+### 🧠 AI, NLP & LLM
+
+#### 🔹 [-Information-Retrieval-System](https://github.com/eyaoueslati06/-Information-Retrieval-System)
+
+**Tools:** Python
+
+---
+
+### 💻 Software & Web Development
+
+#### 🔹 [DatacenterMonitoring](https://github.com/eyaoueslati06/DatacenterMonitoring)
+
+**Tools:** JavaScript • TypeScript • Python • HTML • CSS
+
+---
+
 <!-- PROJECTS_END -->
 
 ---
