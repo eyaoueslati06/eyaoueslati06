@@ -155,27 +155,9 @@ Bank Customer Churn Prediction The aim of this project to analyze the bank custo
 
 ---
 
-### 🔹 [Django](https://github.com/eyaoueslati06/Django)
-
-**Tech / Topics:** HTML
-
----
-
 ### 📁 Other Projects
 
 ### 🔹 [BostonHoursePricing](https://github.com/eyaoueslati06/BostonHoursePricing)
-
-**Tech / Topics:** Jupyter Notebook
-
----
-
-### 🔹 [Zomato](https://github.com/eyaoueslati06/Zomato)
-
-**Tech / Topics:** Jupyter Notebook
-
----
-
-### 🔹 [Red-Wine-Quality](https://github.com/eyaoueslati06/Red-Wine-Quality)
 
 **Tech / Topics:** Jupyter Notebook
 
