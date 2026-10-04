@@ -124,13 +124,17 @@
 
 #### 🔹 [FinancialReportingAndAnalysis](https://github.com/eyaoueslati06/FinancialReportingAndAnalysis)
 
+Welcome to the Financial Reporting & Analysis with Power BI repository! This project showcases a comprehensive financial reporting and advanced analysis solution built using Power BI. Leveraging powerful data analysis expressions (DAX) and financial analysis techniques, this project delivers adap...
+
+**Tools:** Power BI • Express
+
 ---
 
 #### 🔹 [customer_behavior_analysis](https://github.com/eyaoueslati06/customer_behavior_analysis)
 
 Data analytics Project showcasing customer behavior analysis using python, sql and power BI
 
-**Tools:** Jupyter Notebook
+**Tools:** Jupyter Notebook • Power BI
 
 ---
 
@@ -178,7 +182,9 @@ Bank Customer Churn Prediction The aim of this project to analyze the bank custo
 
 #### 🔹 [-Information-Retrieval-System](https://github.com/eyaoueslati06/-Information-Retrieval-System)
 
-**Tools:** Python
+This project is an AI-powered Information Retrieval System designed to answer questions about uploaded PDF documents.
+
+**Tools:** Python • Streamlit • LangChain • FAISS • Gemini
 
 ---
 
@@ -186,7 +192,7 @@ Bank Customer Churn Prediction The aim of this project to analyze the bank custo
 
 #### 🔹 [DatacenterMonitoring](https://github.com/eyaoueslati06/DatacenterMonitoring)
 
-**Tools:** JavaScript • TypeScript • Python • HTML • CSS
+**Tools:** JavaScript • TypeScript • Python • HTML • CSS • Apache Spark
 
 ---
 
