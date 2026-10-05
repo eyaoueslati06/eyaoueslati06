@@ -142,6 +142,14 @@ Data analytics Project showcasing customer behavior analysis using python, sql a
 
 ### 🤖 Data Science & Machine Learning
 
+#### 🔹 [mental-health-score-prediction](https://github.com/eyaoueslati06/mental-health-score-prediction)
+
+A machine learning regression project that predicts a student's Mental Health Score based on social media usage, study habits, sleep, physical activity, stress level, and demographic information.
+
+**Tools:** Jupyter Notebook • Pandas • NumPy • Scikit-learn • Matplotlib • Seaborn
+
+---
+
 #### 🔹 [Resume-Category-Prediction](https://github.com/eyaoueslati06/Resume-Category-Prediction)
 
 Machine learning project that classifies resumes into job categories using NLP, TF-IDF vectorization, and a trained classification model.
