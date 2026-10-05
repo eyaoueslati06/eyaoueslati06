@@ -10,6 +10,10 @@ USERNAME = "eyaoueslati06"
 README_FILE = "README.md"
 
 
+README_CACHE = {}
+LANGUAGE_CACHE = {}
+
+
 CATEGORY_KEYWORDS = {
 
     "📊 Data Analysis & Business Intelligence": [
@@ -46,7 +50,6 @@ CATEGORY_KEYWORDS = {
         "xgboost",
         "scikit-learn",
         "sklearn",
-        "model",
         "fraud detection",
         "anomaly detection",
         "forecasting",
@@ -54,7 +57,6 @@ CATEGORY_KEYWORDS = {
 
     "🧠 AI, NLP & LLM": [
         "artificial intelligence",
-        "ai",
         "llm",
         "large language model",
         "rag",
@@ -90,7 +92,6 @@ CATEGORY_KEYWORDS = {
     ],
 
     "💻 Software & Web Development": [
-        "web",
         "website",
         "react",
         "frontend",
@@ -103,9 +104,10 @@ CATEGORY_KEYWORDS = {
         "javascript",
         "java",
         "spring",
-        "api",
-        "application",
-        "software",
+        "node.js",
+        "nodejs",
+        "express",
+        "mongodb",
     ],
 }
 
@@ -303,6 +305,9 @@ def get_repositories():
 
 def get_repository_languages(repo_name):
 
+    if repo_name in LANGUAGE_CACHE:
+        return LANGUAGE_CACHE[repo_name]
+
     url = (
         f"https://api.github.com/repos/"
         f"{USERNAME}/{repo_name}/languages"
@@ -318,10 +323,14 @@ def get_repository_languages(repo_name):
             reverse=True
         )
 
-        return [
+        result = [
             language
             for language, _ in languages
         ]
+
+        LANGUAGE_CACHE[repo_name] = result
+
+        return result
 
     except Exception as error:
 
@@ -330,10 +339,15 @@ def get_repository_languages(repo_name):
             f"{repo_name}: {error}"
         )
 
+        LANGUAGE_CACHE[repo_name] = []
+
         return []
 
 
 def get_readme_content(repo_name):
+
+    if repo_name in README_CACHE:
+        return README_CACHE[repo_name]
 
     url = (
         f"https://api.github.com/repos/"
@@ -350,14 +364,19 @@ def get_readme_content(repo_name):
         )
 
         if not encoded_content:
+            README_CACHE[repo_name] = ""
             return ""
 
-        return base64.b64decode(
+        content = base64.b64decode(
             encoded_content
         ).decode(
             "utf-8",
             errors="ignore"
         )
+
+        README_CACHE[repo_name] = content
+
+        return content
 
     except Exception as error:
 
@@ -365,6 +384,8 @@ def get_readme_content(repo_name):
             f"Could not read README for "
             f"{repo_name}: {error}"
         )
+
+        README_CACHE[repo_name] = ""
 
         return ""
 
@@ -592,7 +613,6 @@ def classify_repository(repo):
     )
 
     if scores[best_category] == 0:
-
         return "📁 Other Projects"
 
     return best_category
@@ -602,7 +622,10 @@ def detect_tools(repo):
 
     tools = []
 
+    # --------------------------------
     # GitHub detected languages
+    # --------------------------------
+
     languages = get_repository_languages(
         repo["name"]
     )
@@ -612,7 +635,10 @@ def detect_tools(repo):
         if language not in tools:
             tools.append(language)
 
+    # --------------------------------
     # GitHub topics
+    # --------------------------------
+
     topics = repo.get(
         "topics",
         []
@@ -631,7 +657,10 @@ def detect_tools(repo):
             if tool not in tools:
                 tools.append(tool)
 
-    # README detection
+    # --------------------------------
+    # README tool detection
+    # --------------------------------
+
     readme_content = get_readme_content(
         repo["name"]
     ).lower()
@@ -740,9 +769,7 @@ def generate_projects(repositories):
             )
 
             output.append("")
-
             output.append("---")
-
             output.append("")
 
     return "\n".join(
