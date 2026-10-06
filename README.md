@@ -146,7 +146,7 @@ Data analytics Project showcasing customer behavior analysis using python, sql a
 
 A machine learning regression project that predicts a student's Mental Health Score based on social media usage, study habits, sleep, physical activity, stress level, and demographic information.
 
-**Tools:** Jupyter Notebook • Pandas • NumPy • Scikit-learn • Matplotlib • Seaborn
+**Tools:** Jupyter Notebook • CSS • HTML • JavaScript • Python • Pandas • NumPy • Scikit-learn
 
 ---
 
