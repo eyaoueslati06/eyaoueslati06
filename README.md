@@ -142,6 +142,10 @@ Data analytics Project showcasing customer behavior analysis using python, sql a
 
 ### 🤖 Data Science & Machine Learning
 
+#### 🔹 [NYC-Airbnb-Room-Type-Classification](https://github.com/eyaoueslati06/NYC-Airbnb-Room-Type-Classification)
+
+---
+
 #### 🔹 [mental-health-score-prediction](https://github.com/eyaoueslati06/mental-health-score-prediction)
 
 A machine learning regression project that predicts a student's Mental Health Score based on social media usage, study habits, sleep, physical activity, stress level, and demographic information.
