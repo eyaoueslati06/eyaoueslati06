@@ -144,6 +144,8 @@ Data analytics Project showcasing customer behavior analysis using python, sql a
 
 #### 🔹 [NYC-Airbnb-Room-Type-Classification](https://github.com/eyaoueslati06/NYC-Airbnb-Room-Type-Classification)
 
+**Tools:** Jupyter Notebook • JavaScript • CSS • HTML • Python
+
 ---
 
 #### 🔹 [mental-health-score-prediction](https://github.com/eyaoueslati06/mental-health-score-prediction)
