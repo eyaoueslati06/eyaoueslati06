@@ -144,7 +144,9 @@ Data analytics Project showcasing customer behavior analysis using python, sql a
 
 #### 🔹 [NYC-Airbnb-Room-Type-Classification](https://github.com/eyaoueslati06/NYC-Airbnb-Room-Type-Classification)
 
-**Tools:** Jupyter Notebook • JavaScript • CSS • HTML • Python
+A machine learning project that predicts the room type of an Airbnb listing in New York City based on listing characteristics such as location, price, availability, minimum nights, and review activity.
+
+**Tools:** Jupyter Notebook • JavaScript • CSS • HTML • Python • Pandas • NumPy • Scikit-learn
 
 ---
 
