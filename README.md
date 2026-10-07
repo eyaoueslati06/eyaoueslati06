@@ -23,10 +23,12 @@
 ### 🧭 Quick Navigation
 
 - 🚀 [Projects](#-projects)
+  - 📊 [Data Analysis & Business Intelligence](#-data-analysis--business-intelligence)
+  - 🤖 [Data Science & Machine Learning](#-data-science--machine-learning)
+  - 🧠 [AI, NLP & LLM](#-ai-nlp--llm)
+  - 💻 [Software & Web Development](#-software--web-development)
 - 💻 [Tech Stack](#-tech-stack)
 - 🎯 [Currently Exploring](#-currently-exploring)
-
----
 
 # 🚀 Projects
 
