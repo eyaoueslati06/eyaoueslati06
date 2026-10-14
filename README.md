@@ -72,7 +72,9 @@ A machine learning project that predicts the room type of an Airbnb listing in N
 
 #### 🔹 [mental-health-score-prediction](https://github.com/eyaoueslati06/mental-health-score-prediction)
 
-**Tools:** Jupyter Notebook • CSS • HTML • JavaScript • Python
+A machine learning regression project that predicts a student's Mental Health Score based on social media usage, study habits, sleep, physical activity, stress level, and demographic information.
+
+**Tools:** Jupyter Notebook • CSS • HTML • JavaScript • Python • Pandas • NumPy • Scikit-learn
 
 ---
 
